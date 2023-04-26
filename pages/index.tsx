@@ -73,7 +73,7 @@ export async function getStaticProps() {
       url: "https://crypto-tracker-two-liard.vercel.app/",
     },
     {
-      preview: "/proyects/frontend-mentor-challenges.png",
+      preview: "/proyects/frontend-mentor-challenges-2.png",
       name: "FrontendMentor Challenges",
       description: "Conjunto de proyectos web de FrontendMentor",
       repository: "https://github.com/jbuendia1y/frontend_mentor_challenges",
