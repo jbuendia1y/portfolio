@@ -1,4 +1,4 @@
-export interface IProyect {
+export interface IProject {
   preview: string;
   name: string;
   description: string;

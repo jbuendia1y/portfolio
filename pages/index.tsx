@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import { IProyect } from "@/models";
+import { IProject } from "@/models";
 import Link from "next/link";
+import { getProyects } from "@/services";
 
-function Home(props: { proyects: IProyect[] }) {
+function Home(props: { proyects: IProject[] }) {
   const { proyects } = props;
 
   return (
@@ -31,7 +32,7 @@ function Home(props: { proyects: IProyect[] }) {
               {proyects.map((v) => (
                 <article key={v.name} className="card w-100">
                   <div className="card-img-top">
-                    <Image src={v.preview} alt={v.name} fill />
+                    <Image src={v.preview} alt={v.name} fill loading="lazy" />
                   </div>
                   <div className="card-body">
                     <h1 className="card-title fs-4">{v.name}</h1>
@@ -57,29 +58,7 @@ function Home(props: { proyects: IProyect[] }) {
 }
 
 export async function getStaticProps() {
-  const proyects: IProyect[] = [
-    {
-      preview: "/proyects/hackathon-get-on-board.png",
-      name: "Hackathon Get on Board",
-      description: "ReactJS | ViteJS | Firebase | ChakraUI",
-      repository: "https://github.com/JPerezC92/hackathon-get-on-board",
-      url: "https://hackathon-get-on-board.vercel.app/",
-    },
-    {
-      preview: "/proyects/crypto-tracker.png",
-      name: "Crypto Tracker",
-      description: "NextJS | Bootstrap | Firebase",
-      repository: "https://gitlab.com/jbuendia1y/crypto-tracker",
-      url: "https://crypto-tracker-two-liard.vercel.app/",
-    },
-    {
-      preview: "/proyects/frontend-mentor-challenges.png",
-      name: "FrontendMentor Challenges",
-      description: "Conjunto de proyectos web de FrontendMentor",
-      repository: "https://github.com/jbuendia1y/frontend_mentor_challenges",
-      url: "https://jbuendia1y.github.io/frontend_mentor_challenges/",
-    },
-  ];
+  const proyects: IProject[] = await getProyects();
 
   return {
     props: {
