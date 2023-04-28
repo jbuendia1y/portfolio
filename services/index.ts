@@ -6,7 +6,7 @@ const contentfulClient = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE_ID ?? "",
 });
 
-export const getProyects = async () => {
+export const getProjects = async () => {
   const result = await contentfulClient
     .getEntries({ content_type: "projects" })
     .then((v) => v.items.map((v) => createProjectAddapted(v.fields)));

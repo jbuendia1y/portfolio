@@ -2,9 +2,11 @@
   display: grid;
   place-content: center;
   min-height: 150px;
+
+  margin-top: 10px;
 }
 
-.proyects__list{
+.projects__list{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
   justify-items: center;

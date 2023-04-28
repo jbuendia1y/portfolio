@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { IProject } from "@/models";
-import Link from "next/link";
-import { getProyects } from "@/services";
+import { getProjects } from "@/services";
+import { ProjectCard } from "@/components";
 
-function Home(props: { proyects: IProject[] }) {
-  const { proyects } = props;
+function Home(props: { projects: IProject[] }) {
+  const { projects } = props;
 
   return (
     <>
@@ -28,26 +27,9 @@ function Home(props: { proyects: IProject[] }) {
         <main>
           <section className="container">
             <h2 className="text-center mb-2">Proyectos</h2>
-            <div className={styles.proyects__list}>
-              {proyects.map((v) => (
-                <article key={v.name} className="card w-100">
-                  <div className="card-img-top">
-                    <Image src={v.preview} alt={v.name} fill loading="lazy" />
-                  </div>
-                  <div className="card-body">
-                    <h1 className="card-title fs-4">{v.name}</h1>
-                    <p className="card-text">{v.description}</p>
-
-                    <div className="d-flex justify-content-end gap-1">
-                      <Link className="btn btn-light" href={v.repository}>
-                        Código
-                      </Link>
-                      <Link className="btn btn-primary" href={v.url}>
-                        Ver más
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+            <div className={styles.projects__list}>
+              {projects.map((data) => (
+                <ProjectCard key={data.name} data={data} />
               ))}
             </div>
           </section>
@@ -58,11 +40,11 @@ function Home(props: { proyects: IProject[] }) {
 }
 
 export async function getStaticProps() {
-  const proyects: IProject[] = await getProyects();
+  const projects: IProject[] = await getProjects();
 
   return {
     props: {
-      proyects,
+      projects,
     },
   };
 }
