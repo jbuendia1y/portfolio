@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["images.ctfassets.net"],
   },
+  swcMinify: true,
 };
 
 module.exports = nextConfig;
