@@ -17,11 +17,11 @@ export function ProjectCard(props: { data: IProject }) {
           loading="lazy"
         />
       </div>
-      <div className="card-body">
+      <div className="card-body d-flex flex-column">
         <h1 className="card-title fs-4">{data.name}</h1>
         <p className="card-text">{data.description}</p>
 
-        <div className="d-flex justify-content-end gap-1">
+        <div className="d-flex justify-content-end gap-1 mt-auto">
           <Link className="btn btn-light" href={data.repository}>
             Código
           </Link>
