@@ -2,7 +2,8 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { IProject } from "@/models";
 import { getProjects } from "@/services";
-import { ProjectCard } from "@/components";
+import { Footer, Navbar, ProjectCard } from "@/components";
+import Image from "next/image";
 
 function Home(props: { projects: IProject[] }) {
   const { projects } = props;
@@ -16,7 +17,20 @@ function Home(props: { projects: IProject[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
+        <Navbar />
         <header className={`container text-center ${styles.header}`}>
+          <div
+            className={`
+              rounded-circle 
+              overflow-hidden 
+              position-relative 
+              d-inline-block 
+              mx-auto 
+              mb-2
+              ${styles.header__image}`}
+          >
+            <Image src="/Photo.jpeg" alt="Joaquín Buendía" fill sizes="100%" />
+          </div>
           <h1>Joaquín Buendía</h1>
           <p className="w-75 mx-auto">
             Hola, soy un desarrollador de software apasionado por desarrollar
@@ -26,7 +40,9 @@ function Home(props: { projects: IProject[] }) {
 
         <main>
           <section className="container">
-            <h2 className="text-center mb-2">Proyectos</h2>
+            <h2 className="text-center mb-2" id="projects">
+              Proyectos
+            </h2>
             <div className={styles.projects__list}>
               {projects.map((data) => (
                 <ProjectCard key={data.name} data={data} />
@@ -34,6 +50,7 @@ function Home(props: { projects: IProject[] }) {
             </div>
           </section>
         </main>
+        <Footer />
       </div>
     </>
   );
