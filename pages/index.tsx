@@ -20,16 +20,15 @@ function Home(props: { projects: IProject[] }) {
         <Navbar />
         <header className={`container text-center ${styles.header}`}>
           <div
-            className={`
-              rounded-circle 
-              overflow-hidden 
-              position-relative 
-              d-inline-block 
-              mx-auto 
-              mb-2
-              ${styles.header__image}`}
+            className={`rounded-circle overflow-hidden position-relative d-inline-block mx-auto mb-2 ${styles.header__image}`}
           >
-            <Image src="/Photo.jpeg" alt="Joaquín Buendía" fill sizes="100%" />
+            <Image
+              src="/Photo.jpeg"
+              alt="Joaquín Buendía"
+              fill
+              sizes="100%"
+              priority
+            />
           </div>
           <h1>Joaquín Buendía</h1>
           <p className="w-75 mx-auto">
