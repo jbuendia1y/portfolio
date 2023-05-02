@@ -1,9 +1,17 @@
 .header{
   display: grid;
   place-content: center;
-  min-height: 150px;
+  min-height: 80vh;
+}
 
-  margin-top: 10px;
+.header__image{
+  width: 150px;
+  height: 150px;
+}
+
+.header__image img{
+  object-fit: cover;
+  object-position: top;
 }
 
 .projects__list{
