@@ -1,12 +1,22 @@
 .header{
   display: grid;
+  min-height: 90vh;
+  max-width: 1000px;
+  
+  grid-template-columns: 1fr;
   place-content: center;
-  min-height: 80vh;
+  justify-items: center;
 }
 
 .header__image{
+  display: inline-block;
   width: 150px;
   height: 150px;
+
+  overflow: hidden;
+  position: relative;
+
+  border-radius: 50%;
 }
 
 .header__image img{
@@ -14,9 +24,46 @@
   object-position: top;
 }
 
-.projects__list{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-  justify-items: center;
-  gap: 10px;
+.content{
+  max-width: 750px;
+}
+
+.projects{
+  padding-bottom: 5px;
+}
+
+.projects::-webkit-scrollbar {
+  height: 7px;
+}
+
+/* Track */
+.projects::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+.projects::-webkit-scrollbar-thumb {
+  border-radius: 1000px;
+  background: #0b5cff7b;
+}
+
+/* Handle on hover */
+.projects::-webkit-scrollbar-thumb:hover {
+  background: #0b30ff6a;
+}
+
+@media (min-width:992px){
+  .header{
+    grid-template-columns: 1fr minmax(max-content,250px);
+  }
+
+  .header__image{
+    grid-column: 2/3;
+    width: 200px;
+    height: 200px;
+  }
+
+  .content{
+    grid-row: 1/2;
+  }
 }
