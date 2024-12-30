@@ -1,0 +1,111 @@
+---
+import { CiDark, CiLight } from "react-icons/ci";
+
+const navItems: Array<{ title: string; label: string; url: string }> = [
+  {
+    title: "Proyectos",
+    label: "projects",
+    url: "/#projects",
+  },
+  {
+    title: "Certificaciones",
+    label: "certifications",
+    url: "/#certifications",
+  },
+  {
+    title: "Sobre mí",
+    label: "about-me",
+    url: "/#about-me",
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "mailto:jbuendia1y@gmail.com",
+  },
+];
+---
+
+<header
+  id="box-navbar"
+  class="fixed top-0 z-10 flex justify-center items-center mt-5 w-full"
+>
+  <nav
+    class="flex justify-center gap-4 px-6 py-2 rounded-full text-black dark:text-white bg-slate-300/50 dark:bg-slate-600/50"
+  >
+    {
+      navItems.map((item) => {
+        return (
+          <a
+            href={item.url}
+            aria-label={item.label}
+            class="transition-colors hover:text-blue-500"
+          >
+            {item.title}
+          </a>
+        );
+      })
+    }
+    <button
+      aria-label="toggle-theme"
+      id="toggle-theme"
+      class="relative flex items-center justify-between px-1 w-12 rounded-full bg-slate-400 border-slate-500"
+    >
+      <div
+        id="toggle-theme-circle"
+        class="absolute top-[1.5px] left-[3px] w-5 h-5 bg-slate-200 rounded-full transition-transform"
+      >
+      </div>
+      <CiDark /><CiLight /></button
+    >
+  </nav>
+</header>
+
+<style>
+  .switch {
+    transform: translateX(100%);
+  }
+
+  nav {
+    animation: nav-shadow 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+    animation-play-state: infinite;
+  }
+
+  @keyframes nav-shadow {
+    0% {
+      @apply bg-slate-300/0 dark:bg-slate-600/0;
+    }
+    to {
+      @apply shadow-md ring-1 backdrop-blur-lg ring-white/10;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Theme logic
+    const toggleTheme = () => {
+      const e = document.querySelector("#toggle-theme-circle");
+      document.documentElement.classList.toggle("dark");
+      e?.classList.toggle("switch");
+
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    };
+
+    const isDefaultDark =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    if (isDefaultDark) {
+      toggleTheme();
+    }
+
+    document
+      .querySelector("#toggle-theme")
+      ?.addEventListener("click", () => toggleTheme());
+  });
+</script>

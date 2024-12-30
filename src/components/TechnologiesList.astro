@@ -1,0 +1,14 @@
+---
+import type { Technology } from "../models/Project";
+import TechnologieItem from "./TechnologieItem.astro";
+
+interface Props {
+  technologies: Array<Technology>;
+}
+
+const { technologies }: Props = Astro.props;
+---
+
+<ul class="flex flex-wrap my-2 gap-2 box-border max-w-full">
+  {technologies.map((techName) => <TechnologieItem techName={techName} />)}
+</ul>

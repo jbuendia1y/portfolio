@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { clsx } from "clsx";
+// import astroLogo from '../assets/astro.svg';
+// import background from '../assets/background.svg';
+
+type AvailableElements = "button" | "a";
+
+interface Props extends HTMLAttributes<AvailableElements> {
+  as?: AvailableElements;
+  href?: string;
+  isOutline?: boolean;
+}
+
+const {
+  as: Element = "button",
+  class: className,
+  type: elementTypeProp = "button",
+  isOutline = false,
+  ...props
+}: Props = Astro.props;
+---
+
+<Element
+  class={clsx(
+    "inline-block px-5 py-2 border-2 box-border rounded-full text-white font-bold",
+    className,
+    {
+      "border-sky-700 bg-sky-700": !isOutline,
+      "border-sky-700 bg-blue-950": isOutline,
+    }
+  )}
+  type={elementTypeProp as "button" | "submit" | "reset" | null | undefined}
+  {...props}><slot /></Element
+>

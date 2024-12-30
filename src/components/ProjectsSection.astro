@@ -1,0 +1,59 @@
+---
+import { RiGitRepositoryLine } from "react-icons/ri";
+import { FaGithub, FaLink } from "react-icons/fa";
+
+import TechnologiesList from "./TechnologiesList.astro";
+import { projects } from "../data";
+import Container from "./Container.astro";
+import Button from "./Button.astro";
+---
+
+<section id="projects">
+  <Container>
+    <h2 class="flex items-center gap-3 text-3xl font-bold mb-3">
+      <RiGitRepositoryLine /> Proyectos
+    </h2>
+    <div class="flex flex-col gap-3">
+      {
+        projects.map((project) => {
+          return (
+            <article class="flex flex-col md:flex-row box-border gap-4">
+              <img
+                src={project.imageUrl}
+                alt={project.imageAlt}
+                class="aspect-video w-full md:w-1/2 md:h-56 rounded-xl"
+              />
+              <div class="box-border pb-6">
+                <h3 class="text-2xl font-semibold">{project.title}</h3>
+                <TechnologiesList technologies={project.technologies} />
+                <p class="my-2 mb-4">{project.description}</p>
+                <div class="flex gap-3">
+                  {project.repository && (
+                    <Button
+                      as="a"
+                      href={project.repository}
+                      isOutline
+                      class="inline-flex items-center gap-2 rounded-lg"
+                    >
+                      <FaGithub /> Code
+                    </Button>
+                  )}
+                  {project.website && (
+                    <Button
+                      as="a"
+                      href={project.website}
+                      isOutline
+                      class="inline-flex items-center gap-2 rounded-lg"
+                    >
+                      <FaLink /> Preview
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </Container>
+</section>

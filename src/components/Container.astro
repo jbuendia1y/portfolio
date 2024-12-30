@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { clsx } from "clsx";
+
+type AvailableElements =
+  | "header"
+  | "div"
+  | "section"
+  | "article"
+  | "footer"
+  | "main";
+
+interface Props extends HTMLAttributes<AvailableElements> {
+  as?: AvailableElements;
+}
+
+const { as: Element = "div", class: className, ...props }: Props = Astro.props;
+---
+
+<Element
+  class={clsx("w-[90%] min-w-80 max-w-2xl lg:max-w-4xl mx-auto", className)}
+  {...props}
+>
+  <slot />
+</Element>
