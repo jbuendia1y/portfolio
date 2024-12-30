@@ -1,9 +1,0 @@
-.project{
-    max-width: 360px;
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.2));
-}
-  
-.project__preview {
-  position: relative;
-  height: 200px;
-}

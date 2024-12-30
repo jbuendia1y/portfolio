@@ -1,0 +1,40 @@
+---
+import { BsPersonCheck } from "react-icons/bs";
+import HightlightText from "../components/HightlightText.astro";
+import Container from "./Container.astro";
+---
+
+<section id="about-me" class="my-24 scroll-m-20">
+  <Container>
+    <h2 class="flex items-center gap-3 text-3xl font-bold mb-3">
+      <BsPersonCheck /> Sobre mí
+    </h2>
+    <div class="max-w-xl text-pretty">
+      <p class="xl">
+        Me llamo Joaquín Buendía. Empecé a programar a los 17 años desarrollando
+        landing pages. Actualmente estoy <HightlightText
+          >estudiando la carrera de Ingeniería de Software.</HightlightText
+        >
+      </p>
+      <p class="xl my-3">
+        Entre mis logros puedo destacar mi <HightlightText
+          >contibución a la documentación</HightlightText
+        > del <a
+          href="https://github.com/codigoencasa/builderbot"
+          class="underline">builderbot</a
+        > de codigoencasa, aprendiendo a contribuir a un <HightlightText
+          >proyecto open-source</HightlightText
+        > de gran tamaño.
+      </p>
+      <p class="xl">
+        Como desarrollador que usa frameworks, también creé <a
+          href="https://github.com/oakserver/oak/issues/628"
+          class="underline">mi solución</a
+        > a un problema de las <HightlightText
+          >herramientas de testing del framework Oak para Deno compatible con
+          NodeJS.</HightlightText
+        >
+      </p>
+    </div>
+  </Container>
+</section>

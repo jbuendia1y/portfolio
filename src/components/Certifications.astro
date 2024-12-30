@@ -1,0 +1,61 @@
+---
+import { BiSolidCertification } from "react-icons/bi";
+import Container from "./Container.astro";
+import { SiHackerrank } from "react-icons/si";
+
+const certifications: Array<{
+  name: string;
+  date: string;
+  displayDate: string;
+  certificationLink: string;
+  certificateBy: "hackerrank";
+}> = [
+  {
+    name: "JavaScript (Intermediate) Certificate",
+    date: "2024-11-10",
+    displayDate: "10 de noviembre, 2024",
+    certificationLink: "https://www.hackerrank.com/certificates/c06398dfd59e",
+    certificateBy: "hackerrank",
+  },
+  {
+    name: "Frontend Developer (React) Certificate",
+    date: "2024-1-13",
+    displayDate: "13 de enero, 2024",
+    certificationLink: "https://www.hackerrank.com/certificates/896f51dcaa61",
+    certificateBy: "hackerrank",
+  },
+];
+---
+
+<section id="certifications" class="my-24">
+  <Container>
+    <h2 class="flex items-center gap-3 text-3xl font-bold mb-3">
+      <BiSolidCertification /> Certificaciones
+    </h2>
+    <ol>
+      {
+        certifications.map((certification) => {
+          return (
+            <li class="pb-10 relative">
+              <div class='flex flex-col mx-12 before:content-[""] before:absolute before:top-0 before:left-3 before:w-[2px] before:h-full before:bg-slate-400 dark:before:bg-slate-200'>
+                <div class="absolute top-2 left-1 h-5 w-5 bg-yellow-500 rounded-full" />
+                <p class="flex gap-2 items-center">
+                  <span class="flex gap-2 items-center capitalize">
+                    <SiHackerrank /> {certification.certificateBy}
+                  </span>
+                </p>
+
+                <a href={certification.certificationLink}>
+                  <h3 class="text-2xl font-bold">{certification.name}</h3>
+                </a>
+                <time datetime={certification.date}>
+                  {certification.displayDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </Container>
+</section>
