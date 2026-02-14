@@ -1,14 +1,14 @@
 ---
 import { BiSolidCertification } from "react-icons/bi";
 import Container from "./Container.astro";
-import { SiHackerrank } from "react-icons/si";
+import { SiAnthropic, SiHackerrank } from "react-icons/si";
 
 const certifications: Array<{
   name: string;
   date: string;
   displayDate: string;
   certificationLink: string;
-  certificateBy: "hackerrank";
+  certificateBy: "hackerrank" | "anthropic";
 }> = [
   {
     name: "JavaScript (Intermediate) Certificate",
@@ -23,7 +23,14 @@ const certifications: Array<{
     displayDate: "13 de enero, 2024",
     certificationLink: "https://www.hackerrank.com/certificates/896f51dcaa61",
     certificateBy: "hackerrank",
-  },
+  },  
+  {
+    name: "Claude Code in Action Certificate",
+    date: "2026-2-12",
+    displayDate: "12 de febrero, 2026",
+    certificationLink: "https://verify.skilljar.com/c/kuznn6ju3vbe",
+    certificateBy: "anthropic",
+  }
 ];
 ---
 
@@ -41,7 +48,7 @@ const certifications: Array<{
                 <div class="absolute top-2 left-1 h-5 w-5 bg-yellow-500 rounded-full" />
                 <p class="flex gap-2 items-center">
                   <span class="flex gap-2 items-center capitalize">
-                    <SiHackerrank /> {certification.certificateBy}
+                    {certification.certificateBy === "hackerrank" ? <SiHackerrank /> : <SiAnthropic/>} {certification.certificateBy}
                   </span>
                 </p>
 
