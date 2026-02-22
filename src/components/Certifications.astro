@@ -1,36 +1,36 @@
 ---
 import { BiSolidCertification } from "react-icons/bi";
-import Container from "./Container.astro";
 import { SiAnthropic, SiHackerrank } from "react-icons/si";
+import Container from "./Container.astro";
 
 const certifications: Array<{
-  name: string;
-  date: string;
-  displayDate: string;
-  certificationLink: string;
-  certificateBy: "hackerrank" | "anthropic";
+	name: string;
+	date: string;
+	displayDate: string;
+	certificationLink: string;
+	certificateBy: "hackerrank" | "anthropic";
 }> = [
-  {
-    name: "JavaScript (Intermediate) Certificate",
-    date: "2024-11-10",
-    displayDate: "10 de noviembre, 2024",
-    certificationLink: "https://www.hackerrank.com/certificates/c06398dfd59e",
-    certificateBy: "hackerrank",
-  },
-  {
-    name: "Frontend Developer (React) Certificate",
-    date: "2024-1-13",
-    displayDate: "13 de enero, 2024",
-    certificationLink: "https://www.hackerrank.com/certificates/896f51dcaa61",
-    certificateBy: "hackerrank",
-  },  
-  {
-    name: "Claude Code in Action Certificate",
-    date: "2026-2-12",
-    displayDate: "12 de febrero, 2026",
-    certificationLink: "https://verify.skilljar.com/c/kuznn6ju3vbe",
-    certificateBy: "anthropic",
-  }
+	{
+		name: "JavaScript (Intermediate) Certificate",
+		date: "2024-11-10",
+		displayDate: "10 de noviembre, 2024",
+		certificationLink: "https://www.hackerrank.com/certificates/c06398dfd59e",
+		certificateBy: "hackerrank",
+	},
+	{
+		name: "Frontend Developer (React) Certificate",
+		date: "2024-1-13",
+		displayDate: "13 de enero, 2024",
+		certificationLink: "https://www.hackerrank.com/certificates/896f51dcaa61",
+		certificateBy: "hackerrank",
+	},
+	{
+		name: "Claude Code in Action Certificate",
+		date: "2026-2-12",
+		displayDate: "12 de febrero, 2026",
+		certificationLink: "https://verify.skilljar.com/c/kuznn6ju3vbe",
+		certificateBy: "anthropic",
+	},
 ];
 ---
 
