@@ -2,13 +2,16 @@
 import { BiSolidCertification } from "react-icons/bi";
 import { SiAnthropic, SiHackerrank } from "react-icons/si";
 import Container from "./Container.astro";
+import BigSchoolLogo from "./icons/BigSchoolLogo.astro";
 
 const certifications: Array<{
 	name: string;
 	date: string;
 	displayDate: string;
 	certificationLink: string;
-	certificateBy: "hackerrank" | "anthropic";
+	certificateBy: "hackerrank" | "anthropic" | "big school";
+	displayCertificateBy?: string | boolean;
+	logo: React.FunctionComponent;
 }> = [
 	{
 		name: "JavaScript (Intermediate) Certificate",
@@ -16,6 +19,7 @@ const certifications: Array<{
 		displayDate: "10 de noviembre, 2024",
 		certificationLink: "https://www.hackerrank.com/certificates/c06398dfd59e",
 		certificateBy: "hackerrank",
+		logo: SiHackerrank,
 	},
 	{
 		name: "Frontend Developer (React) Certificate",
@@ -23,6 +27,7 @@ const certifications: Array<{
 		displayDate: "13 de enero, 2024",
 		certificationLink: "https://www.hackerrank.com/certificates/896f51dcaa61",
 		certificateBy: "hackerrank",
+		logo: SiHackerrank,
 	},
 	{
 		name: "Claude Code in Action Certificate",
@@ -30,6 +35,17 @@ const certifications: Array<{
 		displayDate: "12 de febrero, 2026",
 		certificationLink: "https://verify.skilljar.com/c/kuznn6ju3vbe",
 		certificateBy: "anthropic",
+		logo: SiAnthropic,
+	},
+	{
+		name: "Curso de Iniciación al Desarrollo con IA",
+		date: "2026-3-11",
+		displayDate: "11 de marzo, 2026",
+		certificationLink:
+			"https://drive.google.com/file/d/1sGXTb-_d2pm65WpoB6ai2k0Hbdj7LqCH/view?usp=sharing",
+		certificateBy: "big school",
+		displayCertificateBy: false,
+		logo: BigSchoolLogo,
 	},
 ];
 ---
@@ -48,7 +64,7 @@ const certifications: Array<{
                 <div class="absolute top-2 left-1 h-5 w-5 bg-yellow-500 rounded-full" />
                 <p class="flex gap-2 items-center">
                   <span class="flex gap-2 items-center capitalize">
-                    {certification.certificateBy === "hackerrank" ? <SiHackerrank /> : <SiAnthropic/>} {certification.certificateBy}
+                    {<certification.logo />} {certification.displayCertificateBy ?? certification.certificateBy}
                   </span>
                 </p>
 
